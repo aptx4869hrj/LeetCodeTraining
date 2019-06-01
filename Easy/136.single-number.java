@@ -36,6 +36,31 @@ import java.util.Iterator;
  */
 class Solution {
     public int singleNumber(int[] nums) {
+        int[] result = new int[nums.length];
+        int count = 0;
+        for (int i = 0;i < nums.length; i++){
+            for (int j = 0;j <= count;j++){
+                if (j == count){
+                    result[j] = -1;
+                    count++;
+                    j = count +1;
+                }else if (nums[i] == nums[j]){
+                    result[j]++;
+                    count++;
+                    j = count + 1;
+                }
+            }
+        }
+        for (int k = 0; k < result.length ;k++){
+            if (result[k] == -1)
+                return nums[k];
+        }
+        return 0;
+    }
+}
+/**
+ * class Solution {
+    public int singleNumber(int[] nums) {
         HashMap<Integer, Integer> result = new HashMap<>();
         int resultNum = 0;
         for(int i = 0; i < nums.length; i++){
@@ -52,4 +77,5 @@ class Solution {
         return resultNum;
     }
 }
+ */
 
