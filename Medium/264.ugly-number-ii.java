@@ -3,6 +3,11 @@
  *
  * [264] Ugly Number II
  */
+
+ /**
+  * 动态规划
+    更新一个丑数后，就将原先三个数中最小的数替换成更新的这个丑数
+  */
 import java.util.ArrayList;
 
 class Solution {
