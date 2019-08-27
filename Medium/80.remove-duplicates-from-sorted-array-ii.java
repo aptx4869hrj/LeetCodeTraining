@@ -6,6 +6,7 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         int count = 0;
+        // 排序的数组
         for (int num : nums) {
             if(count < 2 || nums[count-2] > num){
                 nums[count] = num;
