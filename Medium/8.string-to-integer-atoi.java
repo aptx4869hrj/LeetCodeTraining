@@ -17,7 +17,7 @@ class Solution {
             i++;
         }
         while(i< str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9'){
-            if(result > Integer.MAX_VALUE/10 || (result == Integer.MAX_VALUE && str.charAt(i) > '7')){
+            if(result > Integer.MAX_VALUE/10 || (result == Integer.MAX_VALUE/10 && str.charAt(i) > '7')){
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
             result = result * 10 + str.charAt(i)-'0';
