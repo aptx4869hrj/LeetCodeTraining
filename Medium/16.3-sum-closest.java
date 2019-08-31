@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
  * @lc app=leetcode id=16 lang=java
  *
@@ -5,27 +7,23 @@
  */
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
-        int res = nums[0]+nums[1]+nums[nums.length-1];
-        int pre = nums[0]+nums[1]+nums[nums.length-1];
+        int res = 0;
+        int sum = Integer.MAX_VALUE;
 
         Arrays.sort(nums);
 
-        for (int i=0;i<nums.length-2;i++){
-            int low= i+1;
-            int high= nums.length-1;
-            while (low<high){
-                int sum= nums[i]+nums[low]+nums[high];
-                int temp=Math.abs(sum-target)<Math.abs(pre-target)?sum:pre;
-                res=Math.abs(res-target)<Math.abs(temp-target)?res:temp;
-                if (sum==target)
-                    return target;
-                else if(sum<target){
-                    pre=sum;
-                    low++;
+        for (int i = 0;i < nums.length; i++){
+            int low = i+1;
+            int high = nums.length-1;
+            while (low < high){
+                if(Math.abs((nums[i]+nums[low]+nums[high] - target)) < sum){
+                    res = nums[i]+nums[low]+nums[high];
+                    sum = Math.abs(res - target);
                 }
-                else {
-                    pre=sum;
+                if(nums[i]+nums[low]+nums[high] - target > 0){
                     high--;
+                }else{
+                    low++;
                 }
             }
         }
